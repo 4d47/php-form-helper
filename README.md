@@ -15,4 +15,5 @@ uselessly complicated form classes out there.
 - No extensions
 - No documentation
 - 45 sloc you can read without a dedication
+- A perfect 100% code coverage
 
