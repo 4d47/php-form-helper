@@ -1,6 +1,8 @@
 <?php
 require 'Form.php';
 
+assert(version_compare(PHP_VERSION, '5.4', '>='));
+
 // Defining the form using a class because it's actually cool to name forms.
 // But we could have also pass the fields to the constructor.
 
@@ -17,8 +19,9 @@ class RegistrationForm extends Form {
                     Form::check(strlen($value) >= 6, 'Password must be at least 6 characters');
                 },
             'password_confirmation' =>
-                // php < 5.4 does not support $this in closure
-                array($this, 'validatePasswordConfirmation'),
+                function($value) {
+                    Form::check($this->password == $value, 'Password confirmation must match');
+                },
             'picture' =>
                 function($value) {
                     Form::check($value['error'] != UPLOAD_ERR_NO_FILE, 'Picture is required');
@@ -29,9 +32,6 @@ class RegistrationForm extends Form {
         );
     }
 
-    public function validatePasswordConfirmation($value) {
-        Form::check($this->password == $value, 'Password confirmation must match');
-    }
 }
 
 // Do this in your controller or something
