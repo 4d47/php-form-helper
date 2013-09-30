@@ -9,8 +9,8 @@ class Form
     public function __construct(array $values, $fields = null)
     {
         $this->init();
-        $this->values = $values;
         if ($fields) $this->fields = $fields;
+        $this->values = array_intersect_key($values, $this->fields);
 
         if ($values) {
             foreach ($this->fields as $name => $callback) {
@@ -46,7 +46,7 @@ class Form
         return $message && $value ? $message : $value;
     }
 
-    private function array_get(&$array, $key, $default = null)
+    private function array_get($array, $key, $default = null)
     {
         return isset($array[$key]) ? $array[$key] : $default;
     }
