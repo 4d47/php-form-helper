@@ -15,7 +15,7 @@ class Form
         if ($values) {
             foreach ($this->fields as $name => $callback) {
                 try {
-                    call_user_func($callback, $this->array_get($values, $name));
+                    call_user_func($callback, $this->get($values, $name));
                 } catch (InvalidArgumentException $e) {
                     $this->errors[$name] = $e->getMessage();
                 }
@@ -37,16 +37,16 @@ class Form
 
     public function __get($name)
     {
-        return $this->array_get($this->values, $name);
+        return $this->get($this->values, $name);
     }
 
     public function error($name, $message = null)
     {
-        $value = $this->array_get($this->errors, $name);
+        $value = $this->get($this->errors, $name);
         return $message && $value ? $message : $value;
     }
 
-    private function array_get($array, $key, $default = null)
+    private function get(array $array, $key, $default = null)
     {
         return isset($array[$key]) ? $array[$key] : $default;
     }
