@@ -57,9 +57,9 @@ $form = new RegistrationForm($_POST + $_FILES);
 
 <form action="" method="post" enctype="multipart/form-data">
 
-    <div class="control-group <?= $form->error('email', 'error') ?>">
-        <label class="control-label">Email</label>
-        <div class="controls">
+    <div class="<?= $form->error('email', 'error') ?>">
+        <label>Email</label>
+        <div>
             <input type="text" id="email" name="email" value="<?= htmlentities($form->email) ?>">
         </div>
         <?php if ($form->error('email')): ?>
@@ -69,9 +69,9 @@ $form = new RegistrationForm($_POST + $_FILES);
         <?php endif ?>
     </div>
 
-    <div class="control-group <?= $form->error('password', 'error') ?>">
-        <label class="control-label">Password</label>
-        <div class="controls">
+    <div class="<?= $form->error('password', 'error') ?>">
+        <label>Password</label>
+        <div>
             <input type="password" id="password" name="password" value="<?= htmlentities($form->password) ?>">
         </div>
         <?php if ($form->error('password')): ?>
@@ -81,9 +81,9 @@ $form = new RegistrationForm($_POST + $_FILES);
         <?php endif ?>
     </div>
 
-    <div class="control-group <?= $form->error('password_confirmation', 'error') ?>">
-        <label class="control-label">Confirm</label>
-        <div class="controls">
+    <div class="<?= $form->error('password_confirmation', 'error') ?>">
+        <label>Confirm</label>
+        <div>
             <input type="password" id="password_confirmation" name="password_confirmation" value="<?= htmlentities($form->password_confirmation) ?>">
         </div>
         <?php if ($form->error('password_confirmation')): ?>
@@ -93,9 +93,9 @@ $form = new RegistrationForm($_POST + $_FILES);
         <?php endif ?>
     </div>
 
-    <div class="control-group <?= $form->error('picture', 'error') ?>">
-        <label class="control-label">Picture</label>
-        <div class="controls">
+    <div class="<?= $form->error('picture', 'error') ?>">
+        <label>Picture</label>
+        <div>
             <input type="file" id="picture" name="picture">
         </div>
         <?php if ($form->error('picture')): ?>
@@ -105,9 +105,7 @@ $form = new RegistrationForm($_POST + $_FILES);
         <?php endif ?>
     </div>
 
-    <div class="control-group">
-        <div class="controls">
-            <input type="submit" class="btn btn-success" value="Submit">
-        </div>
+    <div>
+        <input type="submit" value="Submit">
     </div>
 </form>
