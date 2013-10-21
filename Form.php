@@ -16,7 +16,7 @@ class Form
             foreach ($this->fields as $name => $callback) {
                 try {
                     call_user_func($callback, $this->get($values, $name));
-                } catch (InvalidArgumentException $e) {
+                } catch (DomainException $e) {
                     $this->errors[$name] = $e->getMessage();
                 }
             }
@@ -31,7 +31,7 @@ class Form
     public static function check($expression, $message)
     {
         if (false == $expression) {
-            throw new InvalidArgumentException($message);
+            throw new DomainException($message);
         }
     }
 
