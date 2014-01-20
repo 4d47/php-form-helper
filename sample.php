@@ -1,14 +1,19 @@
 <?php
 require 'Form.php';
 
-assert(version_compare(PHP_VERSION, '5.4', '>='));
+assert(version_compare(PHP_VERSION, '5.4', '>='), '
+PHP 5.4 required
+
+This sample make uses 5.4 for the closure $this support, always available <?=,
+short array syntax and built-in web server for convenience only.  5.4 is not
+required to use Form itself, in fact I think it could go as way back as 5.0.');
 
 // Defining the form using a class because it's actually cool to name forms.
 // But we could have also pass the fields to the constructor.
 
 class RegistrationForm extends Form {
     public function init() {
-        $this->fields = array(
+        $this->fields = [
             'email' =>
                 function($value) {
                     Form::check(!empty($value), 'Email is required');
@@ -26,10 +31,10 @@ class RegistrationForm extends Form {
                 function($value) {
                     Form::check($value['error'] != UPLOAD_ERR_NO_FILE, 'Picture is required');
                     Form::check($value['size'] < 307200, 'Please upload a picture less than 300k');
-                    Form::check(in_array($value['type'], array('image/gif', 'image/jpeg', 'image/png')),
+                    Form::check(in_array($value['type'], ['image/gif', 'image/jpeg', 'image/png']),
                         'Uploaded picture must be a gif, jpeg or png');
                 }
-        );
+        ];
     }
 
 }
