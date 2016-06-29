@@ -1,6 +1,6 @@
 # php-form-helper
 
-A PHP 5.3 Form helper class.
+A PHP Form helper class.
 
 It's late, I can't sleep, and I'm sick of those
 uselessly complicated form classes out there.
