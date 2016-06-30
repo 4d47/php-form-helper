@@ -48,7 +48,7 @@ $form = new RegistrationForm($_POST + $_FILES);
 <?php if ($form->errors): ?>
     <ul class="errors">
         <?php foreach ($form->errors as $key => $message): ?>
-            <li><?= htmlentities($message) ?></li>
+            <li><?= htmlspecialchars($message) ?></li>
         <?php endforeach ?>
     </ul>
 <?php elseif (!empty($form->values)): ?>
@@ -65,11 +65,11 @@ $form = new RegistrationForm($_POST + $_FILES);
     <div class="<?= $form->error('email', 'error') ?>">
         <label>Email</label>
         <div>
-            <input type="text" id="email" name="email" value="<?= htmlentities($form->email) ?>">
+            <input type="text" id="email" name="email" value="<?= htmlspecialchars($form->email) ?>">
         </div>
         <?php if ($form->error('email')): ?>
             <div class="error">
-                <?= htmlentities($form->error('email')) ?>
+                <?= htmlspecialchars($form->error('email')) ?>
             </div>
         <?php endif ?>
     </div>
@@ -77,11 +77,11 @@ $form = new RegistrationForm($_POST + $_FILES);
     <div class="<?= $form->error('password', 'error') ?>">
         <label>Password</label>
         <div>
-            <input type="password" id="password" name="password" value="<?= htmlentities($form->password) ?>">
+            <input type="password" id="password" name="password" value="<?= htmlspecialchars($form->password) ?>">
         </div>
         <?php if ($form->error('password')): ?>
             <div class="error">
-                <?= htmlentities($form->error('password')) ?>
+                <?= htmlspecialchars($form->error('password')) ?>
             </div>
         <?php endif ?>
     </div>
@@ -89,11 +89,11 @@ $form = new RegistrationForm($_POST + $_FILES);
     <div class="<?= $form->error('password_confirmation', 'error') ?>">
         <label>Confirm</label>
         <div>
-            <input type="password" id="password_confirmation" name="password_confirmation" value="<?= htmlentities($form->password_confirmation) ?>">
+            <input type="password" id="password_confirmation" name="password_confirmation" value="<?= htmlspecialchars($form->password_confirmation) ?>">
         </div>
         <?php if ($form->error('password_confirmation')): ?>
             <div class="error">
-                <?= htmlentities($form->error('password_confirmation')) ?>
+                <?= htmlspecialchars($form->error('password_confirmation')) ?>
             </div>
         <?php endif ?>
     </div>
@@ -105,7 +105,7 @@ $form = new RegistrationForm($_POST + $_FILES);
         </div>
         <?php if ($form->error('picture')): ?>
             <div class="error">
-                <?= htmlentities($form->error('picture')) ?>
+                <?= htmlspecialchars($form->error('picture')) ?>
             </div>
         <?php endif ?>
     </div>
